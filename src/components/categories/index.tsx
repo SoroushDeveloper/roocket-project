@@ -4,7 +4,7 @@ import React, {Dispatch} from "react";
 
 export default function Categories({categories, changeCategory}: {
     categories: Category[],
-    changeCategory: Dispatch<React.SetStateAction<string>>
+    changeCategory: Dispatch<React.SetStateAction<any>>
 }) {
     return (
         <>

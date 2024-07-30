@@ -8,6 +8,7 @@ import Link from "next/link";
 import moment from "moment/moment";
 import Article from "@/src/models/article";
 import Category from "@/src/components/articles/category";
+import Hr from "@/src/components/shared/hr";
 
 export default function Page({params}: { params: { slug: string } }) {
     const initialValues: Article = {
@@ -56,7 +57,7 @@ export default function Page({params}: { params: { slug: string } }) {
                 <h4 className="text-center mt-5 text-2xl">
                     {article.description}
                 </h4>
-                <hr className="my-5"/>
+                <Hr/>
                 <p className="">
                     {article.content}
                 </p>

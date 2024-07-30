@@ -3,6 +3,7 @@ import Image from "next/image";
 import moment from "moment";
 import {useRouter} from "next/navigation";
 import Category from "@/src/components/articles/category";
+import Hr from "@/src/components/shared/hr";
 
 export default function ArticleItem({article}: { article: Article }) {
     const router = useRouter()
@@ -17,7 +18,7 @@ export default function ArticleItem({article}: { article: Article }) {
                     onClick={() => router.push('/articles/' + article.slug)}>
                     {article.title}
                 </h3>
-                <hr className="my-5"/>
+                <Hr/>
                 <div className="md:flex justify-between text-sm">
                     <p className="p-2 text-center">
                         {publishedAt}
