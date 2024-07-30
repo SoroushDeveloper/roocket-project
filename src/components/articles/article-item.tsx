@@ -20,7 +20,7 @@ export default function ArticleItem({id, title, image_url, slug, published_at, c
                     <p className="p-2 text-center">
                         {publishedAt}
                     </p>
-                    <Category category={category_label}/>
+                    {category_label && <Category category={category_label}/>}
                 </div>
             </div>
         </>
