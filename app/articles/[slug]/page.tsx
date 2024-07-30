@@ -7,9 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import moment from "moment/moment";
 import Article from "@/src/models/article";
+import Category from "@/src/components/articles/category";
 
 export default function Page({params}: { params: { slug: string } }) {
-    const initialValues:Article = {
+    const initialValues: Article = {
         id: 0,
         slug: '',
         title: '',
@@ -39,15 +40,14 @@ export default function Page({params}: { params: { slug: string } }) {
             <div
                 className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded p-5 m-5">
                 <div className="flex justify-between items-center">
-                    <Link href="/articles" className="rounded bg-gray-500 p-2">
+                    <Link href="/articles"
+                          className="rounded bg-gray-300 dark:bg-gray-700 p-2 hover:bg-gray-400 hover:dark:bg-gray-600">
                         Back
                     </Link>
                     <p>
-                        {publishedAt}
+                        {'Published at : ' + publishedAt}
                     </p>
-                    <p className="bg-gray-400 dark:bg-gray-600 p-2 rounded-3xl text-center">
-                        {article.category_label}
-                    </p>
+                    <Category category={article.category_label}/>
                 </div>
                 <div className="flex justify-center mt-5">
                     <Image loader={myLoader} src={article.image_url} alt={article.slug} width="450" height="450"
