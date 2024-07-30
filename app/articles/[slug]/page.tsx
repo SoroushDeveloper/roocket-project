@@ -35,12 +35,9 @@ export default function Page({params}: { params: { slug: string } }) {
     const publishedAt = moment(article.published_at).format('MMMM Do YYYY, h:mm:ss A');
     return (
         <>
-            <Header/>
-            <h1 className="text-4xl text-center">
-                {article.title}
-            </h1>
+            <Header title={article.title}/>
             <div
-                className="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded p-5 m-5">
+                className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded p-5 m-5">
                 <div className="flex justify-between items-center">
                     <Link href="/articles" className="rounded bg-gray-500 p-2">
                         Back
