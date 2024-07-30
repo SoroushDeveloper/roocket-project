@@ -20,7 +20,7 @@ export default function ArticleItem({article}: { article: Article }) {
                 </h3>
                 <Hr/>
                 <div className="md:flex justify-between text-sm">
-                    <p className="p-2 text-center">
+                    <p className="text-center text-gray-600 dark:text-gray-400">
                         {publishedAt}
                     </p>
                     {article.category_label && <Category category={article.category_label}/>}
