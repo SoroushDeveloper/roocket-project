@@ -47,7 +47,7 @@ export default function Page({params}: { params: { slug: string } }) {
                     <p>
                         {'Published at : ' + publishedAt}
                     </p>
-                    <Category category={article.category_label}/>
+                    {article.category_label && <Category category={article.category_label}/>}
                 </div>
                 <div className="flex justify-center mt-5">
                     <Image loader={myLoader} src={article.image_url} alt={article.slug} width="450" height="450"

@@ -25,12 +25,14 @@ export default function Home() {
     return (
         <>
             <Header title="Home"/>
-            <div
-                className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded p-5 m-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-                {articles.map((article: Article, key) => <ArticleItem key={key} id={article.id} slug={article.slug}
-                                                                      title={article.title}
-                                                                      image_url={article.image_url}
-                                                                      published_at={article.published_at}/>)}
+            <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded p-5 m-5">
+                <h2 className="text-center text-2xl">
+                    Latest Articles
+                </h2>
+                <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+                    {articles.slice(0, 3).map((article: Article, key) =>
+                        <ArticleItem key={key} article={article}/>)}
+                </div>
             </div>
         </>
     )

@@ -7,4 +7,5 @@ export default interface Article {
     category_label?: string,
     description?: string,
     content?: string,
+    article?: Article
 }
