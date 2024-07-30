@@ -12,7 +12,6 @@ export default function Home() {
         await axios
             .get('https://react-camp-api.roocket.ir/api/mr.soroosh.qr@gmail.com/last-articles')
             .then((response) => {
-                console.log(response)
                 setArticles(response.data.data);
             })
             .catch((error) => {
