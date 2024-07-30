@@ -5,4 +5,6 @@ export default interface Article {
     image_url: string,
     published_at: string,
     category_label: string,
+    description?: string,
+    content?: string,
 }

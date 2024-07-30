@@ -6,9 +6,18 @@ import Header from "@/src/components/header";
 import Image from "next/image";
 import Link from "next/link";
 import moment from "moment/moment";
+import Article from "@/src/models/article";
 
 export default function Page({params}: { params: { slug: string } }) {
-    const [article, setArticle] = useState([])
+    const initialValues:Article = {
+        id: 0,
+        slug: '',
+        title: '',
+        image_url: '',
+        published_at: '',
+        category_label: '',
+    }
+    const [article, setArticle] = useState<Article>(initialValues)
     const getArticle = async () => {
         await axios
             .get('https://react-camp-api.roocket.ir/api/mr.soroosh.qr@gmail.com/article/' + params.slug)
