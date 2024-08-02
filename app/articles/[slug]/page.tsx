@@ -70,11 +70,14 @@ export default function Page({params}: { params: { slug: string } }) {
                           className="rounded bg-gray-300 dark:bg-gray-700 p-2 hover:bg-gray-400 hover:dark:bg-gray-600">
                         Back
                     </Link>
-                    <p>
+                    <p className="opacity-0 sm:opacity-100">
                         {'Published at : ' + publishedAt}
                     </p>
                     {article.category_label && <Category category={article.category_label}/>}
                 </div>
+                <p className="sm:hidden text-center mt-5">
+                    {publishedAt}
+                </p>
                 <div className="flex justify-center mt-5">
                     <Image loader={myLoader} src={article.image_url} alt={article.slug} width="450" height="450"
                            className="rounded w-96"/>
