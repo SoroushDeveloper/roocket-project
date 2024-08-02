@@ -7,7 +7,7 @@ export default function Footer() {
                 <p>
                     © Soroush Sagharichiha : 2024 - Present
                 </p>
-                <Link href="#">
+                <Link href="#" className="border-gray-400 dark:border-gray-600 border-l-2 pl-2 sm:p-0 sm:border-none">
                     License
                 </Link>
             </div>
