@@ -7,6 +7,7 @@ import ArticleItem from "@/src/components/articles/article-item";
 import Header from "@/src/components/header";
 import Category from "@/src/models/category";
 import Categories from "@/src/components/categories";
+import Footer from "@/src/components/footer";
 
 export default function Page() {
     const [articles, setArticles] = useState<Article[]>([])
@@ -57,6 +58,7 @@ export default function Page() {
                         <ArticleItem key={key} article={article}/>)}
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

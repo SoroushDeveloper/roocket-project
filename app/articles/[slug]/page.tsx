@@ -12,6 +12,7 @@ import Hr from "@/src/components/shared/hr";
 import {useForm} from "react-hook-form";
 import Success from "@/src/toasts/success";
 import Error from "@/src/toasts/error";
+import Footer from "@/src/components/footer";
 
 export type FormData = {
     name: string;
@@ -124,6 +125,7 @@ export default function Page({params}: { params: { slug: string } }) {
                     </form>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

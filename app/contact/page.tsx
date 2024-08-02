@@ -5,6 +5,7 @@ import axios from "axios";
 import {useForm} from "react-hook-form";
 import Success from "@/src/toasts/success";
 import Error from "@/src/toasts/error";
+import Footer from "@/src/components/footer";
 
 export type FormData = {
     name: string;
@@ -68,6 +69,7 @@ export default function Page() {
                     </button>
                 </form>
             </div>
+            <Footer/>
         </>
     )
 }
