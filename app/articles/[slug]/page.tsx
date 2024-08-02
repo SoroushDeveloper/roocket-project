@@ -94,7 +94,8 @@ export default function Page({params}: { params: { slug: string } }) {
                     <h3 className="text-center text-lg">
                         Leave a comment
                     </h3>
-                    <form className="max-w-sm mx-auto mt-5" onSubmit={handleSubmit(onSubmit)}>
+                    <form className="max-w-sm mx-auto mt-5 border-2 border-gray-300 dark:border-gray-700 rounded p-5"
+                          onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-5">
                             <label htmlFor="name"
                                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
