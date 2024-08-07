@@ -1,28 +1,30 @@
+'use client'
+
 import HeaderItem from "@/src/components/header/item";
 import {HomeIcon, NewspaperIcon, PhoneIcon} from "@heroicons/react/24/solid";
 
-interface Props {
-    title: string,
-}
+import {useTranslations} from 'next-intl';
 
-const HeaderItems = [
-    {
-        'link': '/',
-        'name': 'Home',
-        'icon': <HomeIcon className="size-5"/>,
-    },
-    {
-        'link': '/articles',
-        'name': 'Articles',
-        'icon': <NewspaperIcon className="size-5"/>,
-    },
-    {
-        'link': '/contact',
-        'name': 'Contact us',
-        'icon': <PhoneIcon className="size-5"/>,
-    }
-]
-export default function Header({title}: Props) {
+export default function Header() {
+    const t = useTranslations('Header');
+    const env = useTranslations('Env');
+    const HeaderItems = [
+        {
+            'link': '/',
+            'name': t('Home'),
+            'icon': <HomeIcon className="size-5"/>,
+        },
+        {
+            'link': '/' + env('locale') + '/articles',
+            'name': t('Articles'),
+            'icon': <NewspaperIcon className="size-5"/>,
+        },
+        {
+            'link': '/' + env('locale') + '/contact',
+            'name': t('Contact'),
+            'icon': <PhoneIcon className="size-5"/>,
+        }
+    ]
     return (
         <>
             <div
@@ -32,9 +34,6 @@ export default function Header({title}: Props) {
                         <HeaderItem key={key} link={item.link} name={item.name} icon={item.icon}/>)
                 }
             </div>
-            <h1 className="text-4xl text-center">
-                {title}
-            </h1>
         </>
     )
 }

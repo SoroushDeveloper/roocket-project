@@ -13,6 +13,7 @@ import {useForm} from "react-hook-form";
 import Success from "@/src/toasts/success";
 import Error from "@/src/toasts/error";
 import Footer from "@/src/components/footer";
+import {useTranslations} from "next-intl";
 
 export type FormData = {
     name: string;
@@ -29,6 +30,7 @@ const initialValues: Article = {
 }
 
 export default function Page({params}: { params: { slug: string } }) {
+    const t = useTranslations('Article');
     const [article, setArticle] = useState<Article>(initialValues)
     const getArticle = async () => {
         await axios
@@ -52,7 +54,7 @@ export default function Page({params}: { params: { slug: string } }) {
             .post('https://react-camp-api.roocket.ir/api/mr.soroosh.qr@gmail.com/article/' + params.slug + '/comment', data)
             .then((response) => {
                 if (response.status == 200) {
-                    Success('Your comment was submitted and will be published once approved')
+                    Success(t('success'))
                     reset()
                 }
             })
@@ -63,16 +65,18 @@ export default function Page({params}: { params: { slug: string } }) {
 
     return (
         <>
-            <Header title={article.title}/>
+            <h1 className="text-4xl text-center">
+                {article.title}
+            </h1>
             <div
                 className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded p-5 m-5">
                 <div className="flex justify-between items-center">
                     <Link href="/articles"
                           className="rounded bg-gray-300 dark:bg-gray-700 p-2 hover:bg-gray-400 hover:dark:bg-gray-600">
-                        Back
+                        {t('back')}
                     </Link>
                     <p className="opacity-0 sm:opacity-100">
-                        {'Published at : ' + publishedAt}
+                        {t('published') + ' : ' + publishedAt}
                     </p>
                     {article.category_label && <Category category={article.category_label}/>}
                 </div>
@@ -92,18 +96,18 @@ export default function Page({params}: { params: { slug: string } }) {
                 </p>
                 <div className="bg-gray-200 dark:bg-gray-800 mt-5 p-5 rounded">
                     <h2 className="text-center text-2xl">
-                        Comments
+                        {t('comments')}
                     </h2>
                     <Hr/>
                     <h3 className="text-center text-lg">
-                        Leave a comment
+                        {t('comment')}
                     </h3>
                     <form className="max-w-sm mx-auto mt-5 border-2 border-gray-300 dark:border-gray-700 rounded p-5"
                           onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-5">
                             <label htmlFor="name"
                                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                Your Name
+                                {t('name')}
                             </label>
                             <input type="text" id="name"
                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -113,14 +117,15 @@ export default function Page({params}: { params: { slug: string } }) {
                         <div className="mb-5">
                             <label htmlFor="content"
                                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                Your Comment
+                                {t('message')}
                             </label>
                             <textarea id="content" rows={4}
                                       className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                      placeholder="Write down your comment here" {...register('content', {required: true})}></textarea>
+                                      placeholder={t('content')} {...register('content', {required: true})}></textarea>
                         </div>
                         <button type="submit"
-                                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit
+                                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            {t('submit')}
                         </button>
                     </form>
                 </div>

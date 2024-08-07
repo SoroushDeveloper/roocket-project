@@ -4,12 +4,13 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Article from "@/src/models/article";
 import ArticleItem from "@/src/components/articles/article-item";
-import Header from "@/src/components/header";
 import Category from "@/src/models/category";
 import Categories from "@/src/components/categories";
 import Footer from "@/src/components/footer";
+import {useTranslations} from "next-intl";
 
 export default function Page() {
+    const t = useTranslations('Articles');
     const [articles, setArticles] = useState<Article[]>([])
     const [categories, setCategories] = useState<Category[]>([])
     const [categorizedArticles, setCategorizedArticles] = useState<Article[]>([])
@@ -48,7 +49,9 @@ export default function Page() {
     }
     return (
         <>
-            <Header title="Articles"/>
+            <h1 className="text-4xl text-center">
+                {t('title')}
+            </h1>
             <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded p-5 m-5">
                 <div className="flex-col items-center justify-center">
                     <Categories categories={categories} changeCategory={changeCategoryHandler}/>
